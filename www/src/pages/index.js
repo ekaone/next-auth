@@ -7,7 +7,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl'
 import CodeBlock from '@theme/CodeBlock'
 import ProviderMarquee from '../components/ProviderMarquee'
 import Seo from './seo'
-import styles from './styles.module.css'
+import styles from './index.module.css'
 
 const features = [
   {
@@ -149,7 +149,7 @@ function Home () {
               </div>
               <div className='row'>
                 <div className='col'>
-                  <h2 className='text--center'>
+                  <h2 className='text--center' style={{ fontSize: '2.5rem' }}>
                     Add authentication in minutes!
                   </h2>
                 </div>
@@ -157,13 +157,13 @@ function Home () {
               <div className='row'>
                 <div className='col col--6'>
                   <div className='code'>
-                    <h4 className='code-heading'>Server</h4>
+                    <h4 className='code-heading'>Server <span>/pages/api/auth/[...nextauth].js</span></h4>
                     <CodeBlock className='javascript'>{serverlessFunctionCode}</CodeBlock>
                   </div>
                 </div>
                 <div className='col col--6'>
                   <div className='code'>
-                    <h4 className='code-heading'>Client</h4>
+                    <h4 className='code-heading'>Client <span>/pages/index.js</span></h4>
                     <CodeBlock className='javascript'>{reactComponentCode}</CodeBlock>
                   </div>
                 </div>
@@ -174,17 +174,15 @@ function Home () {
                     <Link
                       to='/getting-started/example'
                       className='button button--primary button--lg rounded-pill'
-                    >Get Started
+                    >Example Code
                     </Link>
                   </p>
                 </div>
               </div>
             </div>
           </section>
-          <div className='container'>
-            <div className='row home-subtitle'>
-              {siteConfig.title} is not affiliated with Vercel or Next.js
-            </div>
+          <div className='home-subtitle'>
+            <p>NextAuth.js is an open source community project.</p>
           </div>
         </main>
       </div>
@@ -193,36 +191,31 @@ function Home () {
 }
 
 const reactComponentCode = `
-import React from 'react'
 import {
-  signIn, 
-  signOut,
-  useSession
+  useSession, signIn, signOut
 } from 'next-auth/client'
 
-export default function myComponent() {
+export default function Component() {
   const [ session, loading ] = useSession()
-
-  return <>
-    {!session && <>
-      Not signed in <br/>
-      <button onClick={signIn}>Sign in</button>
-    </>}
-    {session && <>
+  if(session) {
+    return <>
       Signed in as {session.user.email} <br/>
-      <button onClick={signOut}>Sign out</button>
-    </>}
+      <button onClick={() => signOut()}>Sign out</button>
+    </>
+  }
+  return <>
+    Not signed in <br/>
+    <button onClick={() => signIn()}>Sign in</button>
   </>
-}
-`.trim()
+}`.trim()
 
 const serverlessFunctionCode = `
 import NextAuth from 'next-auth'
 import Providers from 'next-auth/providers'
 
-const options = {
+export default NextAuth({
   providers: [
-    // OAuth authentication providers
+    // OAuth authentication providers...
     Providers.Apple({
       clientId: process.env.APPLE_ID,
       clientSecret: process.env.APPLE_SECRET
@@ -235,17 +228,15 @@ const options = {
       clientId: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_SECRET
     }),
-    // Sign in with email
+    // Passwordless / email sign in
     Providers.Email({
       server: process.env.MAIL_SERVER,
       from: 'NextAuth.js <no-reply@example.com>'
     }),
   ],
-  // SQL or MongoDB database (or leave empty)
+  // Optional SQL or MongoDB database to persist users
   database: process.env.DATABASE_URL
-}
-
-export default (req, res) => NextAuth(req, res, options)
+})
 `.trim()
 
 export default Home

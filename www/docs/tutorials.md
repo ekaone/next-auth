@@ -9,6 +9,18 @@ _These tutorials are contributed by the community and hosted on this site._
 
 _New submissions and edits are welcome!_
 
+### [NextJS Authentication Crash Course with NextAuth.js](https://youtu.be/o_wZIVmWteQ)
+
+This tutorial dives in to the ins and outs of NextAuth including email, Github, Twitter and integrating with Auth0 in under hour.
+
+### [Create your own NextAuth.js Login Pages](https://youtu.be/kB6YNYZ63fw)
+
+This tutorial shows you how to jump in and create your own custom login pages versus using the ones provided by NextAuth.js
+
+### [Refresh Token Rotation](tutorials/refresh-token-rotation)
+
+How to implement refresh token rotation.
+
 ### [Securing pages and API routes](tutorials/securing-pages-and-api-routes)
 
 How to restrict access to pages and API routes.
@@ -41,7 +53,7 @@ A tutorial by Arunoda Susirpiala. Checkout [GetStarted](https://getstarted.sh/) 
 
 ### [Add auth support to a Next.js app with a custom backend](https://arunoda.me/blog/add-auth-support-to-a-next-js-app-with-a-custom-backend)
 
-A tutorial by Arunoda Susirpiala. 
+A tutorial by Arunoda Susirpiala.
 
 ### [How to Configure Azure AD B2C Authentication with Next.js](https://benjaminwfox.com/blog/tech/how-to-configure-azure-b2c-with-nextjs)
 
@@ -55,10 +67,18 @@ Next.js supports multiple patterns for authentication, each designed for differe
 
 A video tutorial by Xiaoru Li from Prisma.
 
- ### [Passwordless Authentication with Next.js, Prisma, and next-auth](https://dev.to/prisma/passwordless-authentication-with-next-js-prisma-and-next-auth-5g8g)
+### [Passwordless Authentication with Next.js, Prisma, and next-auth](https://dev.to/prisma/passwordless-authentication-with-next-js-prisma-and-next-auth-5g8g)
 
 In this post, you'll learn how to add passwordless authentication to your Next.js app using Prisma and next-auth. By the end of this tutorial, your users will be able to log in to your app with either their GitHub account or a Slack-styled magic link sent right to their Email inbox. By Xiaoru Li.
 
 ### [Fullstack Authentication Example with Next.js and NextAuth.js](https://github.com/prisma/prisma-examples/tree/latest/typescript/rest-nextjs-api-routes-auth)
 
 This example shows how to implement a fullstack app in TypeScript with Next.js using React (frontend), Next.js API routes and Prisma Client (backend). It also demonstrates how to implement authentication using NextAuth.js. By Nikolas Burk at Prisma.
+
+### [Adding Authentication to an existing Next.js Application in no time!](https://dev.to/ndom91/adding-authentication-to-an-existing-serverless-next-js-app-in-no-time-with-nextauth-js-192h)
+
+This `dev.to` tutorial walks one through adding NextAuth.js to an existing project. Including setting up the OAuth client id and secret, adding the API routes for authentication, protecting pages and api routes behind that authentication, etc.
+
+### [Adding Sign in With Apple Next JS](https://thesiddd.com/blog/apple-auth)
+
+This tutorial walks step by step on how to get Sign In with Apple working (both locally and on a deployed website) using NextAuth.js.
